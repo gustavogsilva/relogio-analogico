@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Relógio Analógico</title>
+  </head>
+  <body>
+    <div id="relogio" class="relogio"></div>
+
+    <script>
+      let relogio = document.querySelector("#relogio");
+
+      // Adiciona marcadores de minuto e hora ao relógio
+      for (let i = 0; i < 60; i++) {
+        let marcador = document.createElement("div");
+        marcador.className = "marcador";
+        if (i % 5 === 0) marcador.className += " marcador-grande";
+        marcador.style.transform = `rotate(${i * 6}deg)`;
+        relogio.appendChild(marcador);
+      }
+
+      // Cria ponteiro de hora
+      let ponteiroHora = document.createElement("div");
+      ponteiroHora.className = "ponteiro-hora";
+      relogio.appendChild(ponteiroHora);
+
+      // Cria ponteiro de minuto
+      let ponteiroMinuto = document.createElement("div");
+      ponteiroMinuto.className = "ponteiro-minuto";
+      relogio.appendChild(ponteiroMinuto);
+
+      // Cria ponteiro de segundo
+      let ponteiroSegundo = document.createElement("div");
+      ponteiroSegundo.className = "ponteiro-segundo";
+      relogio.appendChild(ponteiroSegundo);
+      let circuloCentral = document.createElement("div");
+      circuloCentral.className = "circulo-central";
+      relogio.appendChild(circuloCentral);
+
+      // Captura horário atual
+      let horarioAtual = new Date();
+      let hora = horarioAtual.getHours();
+      let minuto = horarioAtual.getMinutes();
+      let segundo = horarioAtual.getSeconds();
+
+      // Ajusta posição inicial dos ponteiros
+      ponteiroHora.style.transform = `rotate(${hora * 30 + minuto / 2}deg)`;
+      ponteiroMinuto.style.transform = `rotate(${minuto * 6}deg)`;
+      ponteiroSegundo.style.transform = `rotate(${segundo * 6}deg)`;
+
+      // Função que atualiza ponteiro de segundos
+      setInterval(function () {
+        segundo += 0.01;
+        if (segundo === 60) segundo = 0;
+        ponteiroSegundo.style.transform = `rotate(${segundo * 6}deg)`;
+      }, 10);
+
+      // Função que atualiza ponteiro de minutos e horas
+      setInterval(function () {
+        minuto += 0.01;
+        if (minuto === 60) {
+          minuto = 0;
+          hora++;
+          if (hora === 24) hora = 0;
+        }
+        ponteiroMinuto.style.transform = `rotate(${minuto * 6}deg)`;
+        ponteiroHora.style.transform = `rotate(${hora * 30 + minuto / 2}deg)`;
+      }, 600);
+    </script>
+  </body>
+</html>

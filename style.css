@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(
+    circle,
+    rgba(233, 0, 228, 1) 0%,
+    rgba(0, 79, 186, 1) 100%
+  );
+}
+
+.relogio {
+  width: 600px;
+  height: 600px;
+  background-color: black;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  border: 30px solid #111;
+}
+
+.marcador {
+  position: absolute;
+  width: 20px;
+  height: 4px;
+  top: calc(50% - 2px);
+  background-color: white;
+  margin-left: 10px;
+  transform-origin: 290px 50%;
+}
+
+.marcador-grande {
+  width: 40px;
+  height: 10px;
+  top: calc(50% - 5px);
+}
+
+.ponteiro-hora {
+  position: absolute;
+  height: 150px;
+  width: 14px;
+  left: calc(50% - 7px);
+  bottom: 50%;
+  background-color: white;
+  transform-origin: 50% 100%;
+}
+
+.ponteiro-minuto {
+  position: absolute;
+  height: 220px;
+  width: 10px;
+  left: calc(50% - 5px);
+  bottom: 50%;
+  background-color: white;
+  transform: rotate(90deg);
+  transform-origin: 50% 100%;
+}
+
+.ponteiro-segundo {
+  position: absolute;
+  height: 220px;
+  width: 4px;
+  left: calc(50% - 2px);
+  bottom: 50%;
+  background-color: red;
+  transform: rotate(180deg);
+  transform-origin: 50% 100%;
+}
+
+.circulo-central {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  top: calc(50% - 17px);
+  left: calc(50% - 17px);
+  border-radius: 50%;
+  background-color: red;
+}
