@@ -59,7 +59,7 @@
 
       // Função que atualiza ponteiro de minutos e horas
       setInterval(function () {
-        minuto += 0.01;
+        minuto += 0.1;
         if (minuto === 60) {
           minuto = 0;
           hora++;
@@ -67,7 +67,7 @@
         }
         ponteiroMinuto.style.transform = `rotate(${minuto * 6}deg)`;
         ponteiroHora.style.transform = `rotate(${hora * 30 + minuto / 2}deg)`;
-      }, 600);
+      }, 6000);
     </script>
   </body>
 </html>
